@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html class="h-100" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Мониторинг</title>
+    <script src="/static/distr/js/jquery-3.6.0.min.js"></script>
+    <script src="/static/distr/js/blink.js"></script>
+    <script src="/static/distr/js/tick.js"></script>
+    <script src="/static/distr/js/alert.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/distr/css/index.css">
+</head>
+<body>
+<div id="timer" class="timer"></div>
+<table id="patients">
+    <tr th:each="patient,iter: ${patients}" class="patientRow" th:id="'row_' + ${patient.id}">
+        <td>
+            <span th:id="'dot_' + ${patient.id}" class="dot green"></span>
+            <span th:text="${patient.fio}"></span>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

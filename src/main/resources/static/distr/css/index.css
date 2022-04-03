@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "SegoeUILight";
+    src: url("../font/Segoe_UI_Light.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+body {
+    background: #373737;
+    color: #f4f4f4;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2em;
+    font-family: SegoeUILight, monospace;
+    border-collapse: collapse;
+
+}
+
+td {
+    cursor: pointer;
+    height: auto;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+.timer {
+    text-align: center;
+    font-size: 2em;
+    font-family: "Noto Sans", monospace;
+}
+
+.dot {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.green {
+    background-color: #ACF3AE;
+}
+
+.red {
+    background-color: #FA6B84;
+}
+
+.blink {
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
