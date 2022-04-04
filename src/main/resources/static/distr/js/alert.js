@@ -5,8 +5,14 @@ let setStatus = () => {
             return;
         }
         JSON.parse(alerts).forEach(alert => {
-            $('#dot_' + alert.patient.id).removeClass("green").addClass("red").addClass("blink");
             let row = $('#row_' + alert.patient.id);
+            let dot = $('#dot_' + alert.patient.id);
+            if (!alert.id) {
+                row.off();
+                $(dot).removeClass("red").removeClass("blink").addClass("green");
+                return;
+            }
+            dot.removeClass("green").addClass("red").addClass("blink");
             row.off();
             row.mousedown(() => row.css('background', '#868686'));
             row.mouseup(() => {

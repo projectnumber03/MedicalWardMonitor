@@ -1,5 +1,6 @@
 package ru.plorum.repository;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import ru.plorum.model.Event;
 import ru.plorum.util.ObjectMapper;
 import ru.plorum.util.WebClient;
@@ -12,7 +13,8 @@ public enum EventRepository {
 
     public List<Event> getAll() throws Exception {
         final String body = WebClient.INSTANCE.get("/draw-alerts");
-        return new ObjectMapper().readValue(body);
+        return new ObjectMapper().readValue(body, new TypeReference<>() {
+        });
     }
 
 }
