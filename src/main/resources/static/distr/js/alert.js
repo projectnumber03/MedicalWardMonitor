@@ -21,5 +21,5 @@ let setStatus = () => {
 
 $(document).ready(() => {
     setStatus();
-    setInterval(() => setStatus(), 10000);
+    setInterval(() => setStatus(), 2000);
 });

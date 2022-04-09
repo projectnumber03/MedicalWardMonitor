@@ -13,7 +13,7 @@ body {
 table {
     margin-left: auto;
     margin-right: auto;
-    font-size: 2em;
+    font-size: 3em;
     font-family: SegoeUILight, monospace;
     border-collapse: collapse;
 
@@ -28,24 +28,24 @@ td {
 
 .timer {
     text-align: center;
-    font-size: 2em;
+    font-size: 3em;
     font-family: "Noto Sans", monospace;
 }
 
 .dot {
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
     display: inline-block;
     vertical-align: middle;
 }
 
 .green {
-    background-color: #ACF3AE;
+    background-color: limegreen;
 }
 
 .red {
-    background-color: #FA6B84;
+    background-color: red;
 }
 
 .blink {
