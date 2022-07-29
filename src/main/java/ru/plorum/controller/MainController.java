@@ -43,7 +43,7 @@ public class MainController {
 
     private void closeAlert() {
         get("/close-alert", (req, res) -> {
-            WebClient.INSTANCE.get("/close-alert?id=" + req.queryParams("id"));
+            WebClient.INSTANCE.delete("/alert/" + req.queryParams("id"));
             return res.status();
         });
     }

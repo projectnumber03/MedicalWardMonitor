@@ -11,18 +11,18 @@ public enum WebClient {
 
     INSTANCE;
 
-    public String get(final String url) throws Exception {
+    public int delete(final String url) throws Exception {
         final String serverAddress = PropertiesRepository.INSTANCE.getString("server.address");
         final HttpRequest request = HttpRequest.newBuilder()
                 .uri(new URI(String.format("%s%s", serverAddress, url)))
-                .GET()
+                .DELETE()
                 .build();
-        final HttpResponse<String> response = HttpClient
+        return HttpClient
                 .newBuilder()
                 .version(HttpClient.Version.HTTP_1_1)
                 .build()
-                .send(request, HttpResponse.BodyHandlers.ofString());
-        return response.body();
+                .send(request, HttpResponse.BodyHandlers.ofString())
+                .statusCode();
     }
 
 }

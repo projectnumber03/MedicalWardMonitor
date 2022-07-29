@@ -1,20 +1,20 @@
 package ru.plorum.repository;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import ru.plorum.model.Event;
-import ru.plorum.util.ObjectMapper;
-import ru.plorum.util.WebClient;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public enum EventRepository {
 
     INSTANCE;
 
-    public List<Event> getAll() throws Exception {
-        final String body = WebClient.INSTANCE.get("/draw-alerts");
-        return new ObjectMapper().readValue(body, new TypeReference<>() {
-        });
+    public List<Event> getAll() {
+        final Map<UUID, LocalDateTime> alerts = HazelcastRepository.INSTANCE.getHazelcastInstance().getMap("alerts");
+        return alerts.keySet().stream().map(localDateTime -> new Event(localDateTime, PatientRepository.INSTANCE.createPatient(localDateTime))).collect(Collectors.toList());
     }
 
 }
