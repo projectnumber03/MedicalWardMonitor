@@ -1,3 +1,4 @@
+/*old monitoring*/
 let setStatus = () => {
     $.get("draw-alerts", alerts => {
         JSON.parse(alerts).forEach(alert => {

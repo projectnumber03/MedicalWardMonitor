@@ -1,24 +1,55 @@
 <!DOCTYPE html>
-<html class="h-100" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta content="60" http-equiv="refresh"/>
-    <title>Мониторинг</title>
-    <script src="/static/distr/js/jquery-3.6.0.min.js"></script>
-    <script src="/static/distr/js/blink.js"></script>
-    <script src="/static/distr/js/tick.js"></script>
-    <script src="/static/distr/js/alert.js"></script>
-    <link rel="stylesheet" type="text/css" href="/static/distr/css/index.css">
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <title>ReporterSC - Палатная сигнализация </title>
+    <link href="/static/distr/images/favicon.png" rel="icon" sizes="16x16" type="image/png">
+    <link href="/static/distr/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="/static/distr/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/static/distr/css/style.css" rel="stylesheet">
+    <link href="/static/distr/css/alert-row.css" rel="stylesheet">
 </head>
 <body>
-<div id="timer" class="timer"></div>
-<table id="patients">
-    <tr th:each="patient,iter: ${patients}" class="patientRow" th:id="'row_' + ${patient.id}">
-        <td>
-            <span th:id="'dot_' + ${patient.id}" class="dot green"></span>
-            <span th:text="${patient.fio}"></span>
-        </td>
-    </tr>
-</table>
+<div id="main-wrapper">
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header border-0 pb-0">
+                            <h4 class="card-title">Оперативный мониторинг</h4>
+                        </div>
+                        <div class="card-body alert-table">
+                            <!--Сюда подгружаются уведомления-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p th:text="'© Разработка компании АО &#34Солтеко&#34, ' + ${#dates.format(#dates.createNow(), 'yyyy')} + ' год'">
+            <a href="https://plorum.ru/" target="_blank"></a>
+        </p>
+        <p>Программно-Аппаратный комплекс "Сенсор-Коллектор"</p>
+    </div>
+</div>
+<script src="/static/distr/js/integration/alert-monitor.js"></script>
+<script src="/static/distr/vendor/global/global.min.js"></script>
+<script src="/static/distr/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="/static/distr/js/custom.min.js"></script>
+<script src="/static/distr/js/deznav-init.js"></script>
+<script src="/static/distr/vendor/apexchart/apexchart.js"></script>
+<script src="/static/distr/vendor/bootstrap-datetimepicker/js/moment.js"></script>
+<script src="/static/distr/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/static/distr/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/static/distr/js/plugins-init/datatables.init.js"></script>
+<script src="/static/distr/js/modal.js"></script>
+<script>
+    jQuery(window).on('load', () => initMonitoring());
+</script>
 </body>
 </html>

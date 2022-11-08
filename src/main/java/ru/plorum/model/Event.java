@@ -1,7 +1,10 @@
 package ru.plorum.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import java.util.UUID;
@@ -20,9 +23,32 @@ public final class Event {
     @JsonProperty
     Patient patient;
 
-    public Event(UUID id, Patient patient) {
+    @JsonProperty
+    String zone;
+
+    @JsonProperty
+    Department department;
+
+    @JsonProperty
+    String date;
+
+    @JsonProperty
+    Integer bed;
+
+    public Event(
+            final UUID id,
+            final Patient patient,
+            final String zone,
+            final Department department,
+            final String date,
+            final Integer bed
+    ) {
         this.id = id;
         this.patient = patient;
+        this.zone = zone;
+        this.department = department;
+        this.date = date;
+        this.bed = bed;
     }
 
 }
